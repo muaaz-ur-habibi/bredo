@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+
+    <style >
+        .primary-color {
+            background-color: rgb(1, 0, 78);
+        }
+
+        .secondary-color {
+            background-color:rgb(92, 0, 18);
+        }   
+
+        .c-primary {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height:auto;
+        }
+
+        .c-secondary {
+            background-color:rgb(92, 0, 18);
+        }
+
+        .pretty-headings {
+            padding-top: 6px;
+            padding-bottom: 5px;
+        }
+
+        .pretty-forms {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            /*margin-right: 100px;
+            margin-left: 100px;*/
+            border-radius: 7px;
+            /*height: 100vh;*/
+        }
+
+
+        #signin-form-holder {
+            width: 100px;
+        }
+
+        .key-value-niggas {
+            display: inline;
+        }
+
+        .pretty-div-nigga {
+            margin-right: 5px;
+            margin-left: 5px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-right: 10px;
+            max-width: fit-content+10px;
+            display: inline-block;
+            vertical-align: top;
+            border: 3px solid black;
+        }
+        
+        .pretty-subdiv{
+            border: 2px solid rgb(95, 95, 95);
+            display: inline;
+        }
+
+    </style>   
+
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    <div class="container-fluid bg-light">
+        <div class="container-fluid text-white c-primary primary-color">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar"
+                >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <a class="navbar-brand" href="https://school.credo.edu.pk/">
+                        <img src="/static/logo.jpg" width="162" height="59" class="d-inline-block align-text-top">
+                    </a>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="dashboard" href="/dashboard">Dashboard</a>
+                        <a class="nav-item nav-link" id="login" href="/signin">Login</a>
+                        <a class="nav-item nav-link" id="logout" href="/signout">Logout</a>
+                    </div>
+                </div>
+            </nav>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for c, m in messages %}
+                {% if c == "error" %}
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                      {{ m }}
+                    </div>
+                  </div>
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block extend_body%} 
+            {% endblock %}
+        </div>
+    </div>
+    
+    
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

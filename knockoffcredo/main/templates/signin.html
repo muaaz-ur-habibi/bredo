@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Sign In{% endblock %}
+{% block extend_body%}
+
+    <h1><center>Sign In</center></h1>
+    <br><br><br>
+    <style>
+        .c-primary {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height:90vh;
+        }
+    </style>
+    <div class="container-fluid">
+        <center>
+            <div class="container w-100">
+                <div class="secondary-color pretty-forms w-25 h-25">
+                    <form method="post">         
+                        <div class="col">
+                            <div class="row">
+                                <label for="idinput" class="col-form-label">I.D</label>
+                                <input name="idInput" type="text" class="form-control" placeholder="I.D" id="idinput">
+                            </div>
+                            <div class="row">
+                                <label for="passwordinput" class="col-form-label">Password</label>
+                                <input name="passwordInput" type="password" class="form-control" placeholder="Password" id="passwordinput">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary" id="submitDataBut" name="submitDataBut">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+{% endblock %}
