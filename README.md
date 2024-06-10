@@ -1,5 +1,5 @@
 <h1>BREDO! The Better Credo(website)</h1>
-<h2>yup, thats correct. im directly challenging our school/college's programming skills</h2>
+<h2>yup, thats correct. im directly challenging our school/college's tech staff's programming skills</h2>
 <br>
 Soo, what and why? Well:
 <ul>
