@@ -17,3 +17,8 @@ If you got any complaints, dont say shi. Just keep em to yourself. I aint hearin
 Thank you for reading. And please do enjoy this. I poured my heart and soul over this
 <br>
 PS: if you think this is so childish nigga this crap is being developed by a 16 year old immature anime loving Valorant grinding guy. Its to be expected
+<br><br><br><br>
+<h3>CHECKLIST:</h3>
+things i wanna get done in this before i get outta A2:
+<input type="checkbox" checked="true" name="c1">
+<label for="c1">Lovely UI</label>
