@@ -1,7 +1,9 @@
+(you can currently download the files and see for yourself how this looks. that is if my classmates and schoolmates know how to use git and python and my computer science friend arent all dumbasses)
 <h1>BREDO! The Better Credo(website)</h1>
 <h2>yup, thats correct. im directly challenging our school/college's tech staff's programming skills</h2>
 <br>
 Soo, what and why? Well:
+<br>
 <ul>
   <li>Our original School website is really bland</li>
   <li>Also, its quite difficult to navigate huh. like bro why title the dashboard dashboard when there aint nothing else there.</li>
