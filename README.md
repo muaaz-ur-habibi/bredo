@@ -24,12 +24,12 @@ PS: if you think this is so shitty nigga this crap is being developed by a 16 ye
 <h4>By the way here's a roadmap. I wanna add all this into this amazing website (I cant even finish the main dashboard)</h4>
 <p>❌ means not started. 🚧 means working on it. ✅ means up and running. ⏳ means i give up this is way too hard</p>
 <ul>
-  <li>Dashboard with nice UI</li>  🚧
-  <li>Show basic student info</li>  🚧
-  <li>Show student faculty and subjects info</li>  🚧
-  <li>Show student exam reports</li>  ❌
-  <li>Show student attendence info</li>  ❌
-  <li>Add a chat page similiar to 4chan, called credoSan</li>  ❌
+  <li>Dashboard with nice UI  🚧</li>  
+  <li>Show basic student info  🚧</li>  
+  <li>Show student faculty and subjects info  🚧</li>  
+  <li>Show student exam reports  ❌</li>  
+  <li>Show student attendence info  ❌</li>  
+  <li>Add a chat page similiar to 4chan, called credoSan  ❌</li>
 </ul>
 If youve got anything that you think should be here let me know.
 (Also know that i literally cant find any free hosting platform so maybe this wont workout after all still would be a lovely resume project)
