@@ -1,6 +1,6 @@
-(you can currently download the files and see for yourself how this looks. that is if my classmates and schoolmates know how to use git and python and my computer science friend arent all dumbasses)
-<h1>BREDO! The Better Credo(website)</h1>
-<h2>yup, thats correct. im directly challenging our school/college's tech staff's programming skills</h2>
+(you can currently download the files and see for yourself how this looks. that is if credo's students know how to use git and python)
+<h1>BREDO! The Better Credo (website)</h1>
+<h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
 Soo, what and why? Well:
 <br>
