@@ -3,7 +3,6 @@
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
 <h3>Soo, what and why? Well:</h3>
-<br>
 <ul>
   <li>Our original School website is really bland</li>
   <li>Also, its quite difficult to navigate huh. like bro why title the dashboard dashboard when there aint nothing else there.</li>
