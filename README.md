@@ -1,4 +1,4 @@
-(you can currently download the files and see for yourself how this looks. that is if credo's students know how to use git and python)
+(you can currently download the files and see for yourself how this looks.)
 <h1>BREDO! The Better Credo (website)</h1>
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
@@ -10,6 +10,15 @@ Soo, what and why? Well:
   <li>Color scheme. Login page: 😍, Dashboard and the rest: 🥴.</li>
   <li>No chat room? How do you expect children to learn? (mine also doesnt have one FOR NOW)</li>
   <li>Most importanty: This is made by a student. Come on now, which student has made a better school website for their school for free? huh?</li>
+</ul>
+<hr>
+<h4>Frameworks and languages used to make this:</h4>
+<ul>
+  <li>Python</li>
+  <li>Python - Flask</li>
+  <li>HTML</li>
+  <li>Bootstrap CSS</li>
+  <li>Javascript</li>
 </ul>
 <hr>
 Although this aint the final product, was hoping to meet some other mofos to help me on this. So far, its a one-man army. Guess it should be expected, they just dont teach enough actual useful knowledge in Credo huh 😋. Btw im self learned.
