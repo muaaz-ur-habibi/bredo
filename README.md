@@ -15,7 +15,7 @@
 <h4>Frameworks and languages used to make this:</h4>
 <ul>
   <li>Python</li>
-  <li>Python - Flask</li>
+  <li>Flask - Python</li>
   <li>HTML</li>
   <li>Bootstrap CSS</li>
   <li>Javascript</li>
