@@ -1,4 +1,5 @@
 (you can currently download the files and see for yourself how this looks.)
+<br>
 <h1>BREDO! The Better Credo (website)</h1>
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
@@ -23,9 +24,6 @@
 <hr>
 Although this aint the final product, was hoping to meet some other mofos to help me on this. So far, its a one-man army. Guess it should be expected, they just dont teach enough actual useful knowledge in Credo huh 😋. Btw im self learned.
 <hr>
-If you got any complaints, dont say shi. Just keep em to yourself. I aint hearin non of that.
-<br>
-Thank you for reading. And please do enjoy this. I poured my heart and soul over this
 <br>
 PS: if you think this is so shitty nigga this crap is being developed by a 16 year old immature anime loving Valorant grinding guy. Its to be expected
 <br>
@@ -40,5 +38,6 @@ PS: if you think this is so shitty nigga this crap is being developed by a 16 ye
   <li>Show student attendence info  ❌</li>  
   <li>Add a chat page similiar to 4chan, called credoSan  ❌</li>
 </ul>
+<br>
 If youve got anything that you think should be here let me know.
-(Also know that i literally cant find any free hosting platform so maybe this wont workout after all still would be a lovely resume project)
+Thank you for reading.
