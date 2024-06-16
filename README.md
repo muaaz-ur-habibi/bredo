@@ -2,7 +2,7 @@
 <h1>BREDO! The Better Credo (website)</h1>
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
-Soo, what and why? Well:
+<h3>Soo, what and why? Well</h3>:
 <br>
 <ul>
   <li>Our original School website is really bland</li>
@@ -11,6 +11,7 @@ Soo, what and why? Well:
   <li>No chat room? How do you expect children to learn? (mine also doesnt have one FOR NOW)</li>
   <li>Most importanty: This is made by a student. Come on now, which student has made a better school website for their school for free? huh?</li>
 </ul>
+
 <hr>
 <h4>Frameworks and languages used to make this:</h4>
 <ul>
@@ -31,7 +32,7 @@ PS: if you think this is so shitty nigga this crap is being developed by a 16 ye
 <br>
 <hr>
 <h4>By the way here's a roadmap. I wanna add all this into this amazing website (I cant even finish the main dashboard)</h4>
-<p>❌ means not started. 🚧 means working on it. ✅ means up and running. ⏳ means i give up this is way too hard</p>
+<p>❌ means not started. 🚧 means working on it. ✅ means up and running. ⏳ means i give up on this for now</p>
 <ul>
   <li>Dashboard with nice UI  🚧</li>  
   <li>Show basic student info  🚧</li>  
