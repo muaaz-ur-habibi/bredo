@@ -2,7 +2,7 @@
 <h1>BREDO! The Better Credo (website)</h1>
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
 <br>
-<h3>Soo, what and why? Well</h3>:
+<h3>Soo, what and why? Well:</h3>
 <br>
 <ul>
   <li>Our original School website is really bland</li>
