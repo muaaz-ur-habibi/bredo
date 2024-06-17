@@ -179,6 +179,8 @@ def dashboard(wherethefuck):
     subjects_o = request.args.get('subjects')
     grades = request.args.get('grades')
 
+    grades_o = grades
+
     subjects = str(subjects_o).split('|')
     t_subs = []
     
@@ -209,9 +211,6 @@ def dashboard(wherethefuck):
         flash('You arent signed in', category='error')
         return redirect(url_for("views.signin"))
     
-    #print("\n\n\n\n\n\n\n\nDATA:")
-    #print(incoming_data)
-    #print(subjects)
 
     incoming_data[1] = incoming_data[1].split(': ')[1]
     incoming_data[2] = 'Male' if incoming_data[2].split(": ")[1].strip() == 'Male' else 'Female'
@@ -291,18 +290,29 @@ def dashboard(wherethefuck):
         grades_to_send.append(temp_send)
 
     print('brrrrr')
-    print(grades_to_send)
+    final_g_to_send = []
 
-    for i in grades_to_send:
-        if i is not list:
-            print("this shi aint a list")
+    while grades_to_send:
+        sub = []
+
+        while grades_to_send:
+            it = grades_to_send.pop(0)
+
+            if isinstance(it, list):
+                sub.append(it)
+            else:
+                sub.append(it)
+                break
+        
+        final_g_to_send.append(sub)
+
 
     if wherethefuck == 'personal':
-        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o)
+        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
     elif wherethefuck == 'grades':
-        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o)
+        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
     elif wherethefuck == 'attendance':
-        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o)
+        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
 
 
 @views.route('/signout')
