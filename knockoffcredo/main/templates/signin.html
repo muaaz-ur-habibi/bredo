@@ -15,8 +15,8 @@
     </style>
     <div class="container-fluid">
         <center>
-            <div class="container w-100">
-                <div class="secondary-color pretty-forms w-25 h-25">
+            <div class="container row justify-content-center">
+                <div class="secondary-color pretty-forms col-md-4 h-25 col">
                     <form method="post">         
                         <div class="col">
                             <div class="row">
@@ -28,13 +28,26 @@
                                 <input name="passwordInput" type="password" class="form-control" placeholder="Password" id="passwordinput">
                             </div>
                             <br>
-                            <div class="row">
-                                <button type="submit" class="btn btn-primary" id="submitDataBut" name="submitDataBut">Submit</button>
+                            <div class="row justify-content-center" id="button-holder">
+                                <button type="submit" class="btn btn-primary" id="submitDataBut" name="submitDataBut" onclick="loading()">Submit</button>
                             </div>
+                            <!--<div class="spinner-border" role="status">
+                            </div>-->
                         </div>
                     </form>
                 </div>
             </div>
         </center>
     </div>
+    <script>
+        var d = document.getElementById('button-holder')
+        var loader = document.createElement('span')
+        loader.className = 'spinner-border spinner-border-sm'
+        loader.role = 'status'
+        loader.ariaHidden = 'true'
+        function loading () {
+            document.getElementById('submitDataBut').appendChild(loader)
+            document.getElementById('submitDataBut').innerHTML = 'Loading'
+        }
+    </script>
 {% endblock %}
