@@ -15,6 +15,8 @@
 <ul>
   <li>Python</li>
   <li>Flask - Python</li>
+  <li>Requests - Python</li>
+  <li>BeautifulSoup4 - Python</li>
   <li>HTML</li>
   <li>Bootstrap CSS</li>
   <li>Javascript</li>
