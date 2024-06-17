@@ -32,7 +32,7 @@ PS: if you think this is so shitty nigga this crap is being developed by a 16 ye
   <li>Main dashboard with nice UI  ✅</li>  
   <li>Show basic student info  ✅</li>  
   <li>Show student faculty and subjects info  🚧</li>  
-  <li>Show student exam reports  ❌</li>  
+  <li>Show student exam reports  🚧</li>  
   <li>Show student attendence info  ❌</li>  
 </ul>
 <br>
