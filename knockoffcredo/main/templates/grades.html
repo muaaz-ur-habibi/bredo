@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Dashboard-Grades{% endblock %}
+{% block extend_body%}
+
+    <h1 class="panel-heading pretty-headings"><center>Dashboard-Grades</center></h1><br><br>
+    <div class="row row-cols-xs-1">
+        <div class="col col-md-2">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                  <a href="{{ url_for('views.dashboard', wherethefuck='personal', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('views.dashboard', wherethefuck='grades', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                    Grades
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('views.dashboard', wherethefuck='attendance', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    Attendance
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                    Customers
+                  </a>
+                </li>
+              </ul>
+        </div>
+        <div class="col-md-8">
+          <div class="container-fluid" style="border: 1px solid red;">
+            
+          </div>
+        </div>
+
+
+{% endblock %}
