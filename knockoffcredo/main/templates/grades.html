@@ -4,43 +4,73 @@
 
     <h1 class="panel-heading pretty-headings"><center>Dashboard-Grades</center></h1><br><br>
     <div class="row row-cols-xs-1">
-        <div class="col col-md-2">
+          <div class="col col-md-2">
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                  <a href="{{ url_for('views.dashboard', wherethefuck='personal', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link text-white">
+                  <a href="{{ url_for('views.dashboard', wherethefuck='personal', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades)}}" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url_for('views.dashboard', wherethefuck='grades', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link active" aria-current="page">
+                  <a href="{{ url_for('views.dashboard', wherethefuck='grades', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades)}}" class="nav-link active" aria-current="page">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                     Grades
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url_for('views.dashboard', wherethefuck='attendance', id=id, useful_info=original_data, subjects=original_subs) }}" class="nav-link text-white">
+                  <a href="{{ url_for('views.dashboard', wherethefuck='attendance', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades)}}" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                     Attendance
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                    Products
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                    Customers
                   </a>
                 </li>
               </ul>
         </div>
         <div class="col-md-8">
-          <div class="container-fluid" style="border: 1px solid red;">
-            
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                  <h4>Jump to:</h4>
+                  <div class="list-group">
+                    {% for grade in grades_s %}
+                      <a href="#{{grade[-1].lower()}}" class="list-group-item list-group-item-action">{{ grade[-1].capitalize() }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class=" col-md-8">
+                    {% for g in grades_s %}
+                    <table id="{{g[-1].lower()}}" class="table caption-top table-dark">
+                      <caption>{{ g[-1].capitalize() }}</caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Faculty</th>
+                          <th scope="col">Max Marks</th>
+                          <th scope="col">Marks Obtained</th>
+                          <th scope="col">Percentage</th>
+                          <th scope="col">Grade</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-group-divider">
+                        {% for grade in g[:-2] %}
+                          <tr>
+                            <th scope="row">.</th>
+                            <td>{{ grade[0] }}</td>
+                            <td>{{ grade[1] }}</td>
+                            <td>{{ grade[2] }}</td>
+                            <td>{{ grade[3] }}</td>
+                            <td>{{ grade[4] }}</td>
+                            <td>{{ grade[5] }}</td>
+                          </tr>
+                        {% endfor %}
+                      
+                      </tbody>
+                    </table>
+                    {% endfor %}
+                </div>
+            </div>
+            </div>
           </div>
         </div>
 
