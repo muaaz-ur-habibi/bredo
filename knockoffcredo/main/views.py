@@ -303,7 +303,7 @@ def dashboard(wherethefuck):
             else:
                 sub.append(it)
                 break
-        
+
         final_g_to_send.append(sub)
 
 
