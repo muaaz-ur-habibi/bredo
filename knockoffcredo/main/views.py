@@ -7,18 +7,14 @@ from bs4 import BeautifulSoup as bs
 views = Blueprint("views", __name__)
 
 
-
-#@views.route('/')
-#@login_required
-#def home():
-#    return "<h1>HOME sweet HOME</h1>"
-
+# declare a list that will store all the online users
 online_users = []
 
-
+# main signin page
 @views.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
+        # parameteres for the post request
         id = request.form.get("idInput")
         pas = request.form.get("passwordInput")
 
@@ -29,12 +25,14 @@ def signin():
 
         print(id, pas)
 
+        # data for the post request
         data = {
             "usr" : id,
             "pas" : pas,
             "log" : ""
         }
 
+        # initiate a session. this will also scrape all the necessary info from the school's dashboard
         with req.Session() as sesh:
             try:
                 g = sesh.post("http://schoolportal.credo.edu.pk/schoolportal/loginn.php", data=data)
@@ -46,12 +44,11 @@ def signin():
             s = bs(g.content, "html.parser")
             c = s.find('section', {'class': 'content-header'})
             
+            
             try:
+                # check if the credentials are valid since this shows up if they are
                 ch = s.find('h1')
-
-                if ch is not None:        
-                        online_users.append(id)
-                        
+                if ch is not None:                                
                         #to scrape the student info
                         img = s.find('img', {'style': 'box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;padding: 2px; border-radius: 8px;'}).attrs['src']
                         info = s.find_all("b")
@@ -76,6 +73,7 @@ def signin():
 
                         m_table = n_s.find("table", {"class": "table table-bordered"})
                         m_table.findChildren("tr")
+
                         
                         
                         # to scrape grades
@@ -134,39 +132,42 @@ def signin():
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)
 
 
-
-
-
+                        # define the list that will store (for now) the information to be sent
                         useful_info = []
 
+                        # appending all the useful info to the list to be sent
                         useful_info.append(info[3].text)
                         useful_info.append(info[4].text)
                         for i in more_info:
                             useful_info.append(i.text)
                         
+                        # create a seperate list for subjects
                         subs = [str(i.text).strip() for i in subs]
 
                         subs = '|'.join(subs)
                         subs = subs.replace('\n', '')
 
-                        
+                        # append the fee info to the list to be sent
                         for i in m_table:
                             useful_info.append(i.text)
 
+                        # convert the list to be sent into a string with a seperation criteria since this is a web url parameter
                         data_to_send = "|".join(useful_info)
 
+                        # append the subjects to this
                         data_to_send = f'{data_to_send}|{subs}'
                         data_to_send = data_to_send.replace('\n', '')
 
+                        # append the current id to the list of users that are online
                         online_users.append(str(id))
+
+                        # finally redirect the user to the primary dashboard page with all the necessary info as parameters
                         return redirect(url_for("views.dashboard", useful_info=data_to_send, id=str(id), subjects=subs, grades=f_grades_send, wherethefuck='personal'))
                 else:
+                    # if the check failed means the credentials werent valid
                     flash("Credentials aint valid", category="error")
                     return render_template("signin.html")
-            #except AttributeError:
-                #print('double bruh')
-                #flash("Credentials aint valid", category="error")
-                #return render_template("signin.html")
+            # but if a connection error occured ask user to try again
             except req.exceptions.ConnectionError:
                 flash("Connection Error. Try again later", category="error")
                 return render_template("signin.html")
@@ -179,12 +180,14 @@ def signin():
 
 @views.route("/dashboard/<string:wherethefuck>")
 def dashboard(wherethefuck):
+    # declare all the incoming data as variables
     incoming_data_o = request.args.get('useful_info')
     subjects_o = request.args.get('subjects')
     grades = request.args.get('grades')
 
     grades_o = grades
 
+    # split based on the criteria specified above
     subjects = str(subjects_o).split('|')
     t_subs = []
     
@@ -193,6 +196,7 @@ def dashboard(wherethefuck):
     i = 0
     x=0
 
+    # just seperate and clean all the data
     for s in range(l):
         t_a = []
         t_a.append(subjects[i])
@@ -211,11 +215,12 @@ def dashboard(wherethefuck):
 
     ID = request.args.get('id')
 
+    # if user tried to go to dashboard without signing in throw an error
     if ID not in online_users:
         flash('You arent signed in', category='error')
         return redirect(url_for("views.signin"))
     
-
+    # prettifying the data
     incoming_data[1] = incoming_data[1].split(': ')[1]
     incoming_data[2] = 'Male' if incoming_data[2].split(": ")[1].strip() == 'Male' else 'Female'
     incoming_data[3] = incoming_data[3].split(': ')[1]
@@ -224,8 +229,10 @@ def dashboard(wherethefuck):
 
     section = incoming_data[-2].split(' ')
     for i in section:
-        if i.upper() in ['A', 'B', 'C', 'D', 'E']:
+        if i.upper() in ['A', 'B', 'C', 'D', 'E']:# although my school only has 3 grades but oh well just to be safe
             section = i
+        else:
+            section = "ALIEN"
         
     incoming_data[1] = incoming_data[1].replace('th', section).replace('Grade', '')
 
@@ -293,7 +300,6 @@ def dashboard(wherethefuck):
             temp_send = temp_send[0]
         grades_to_send.append(temp_send)
 
-    print('brrrrr')
     final_g_to_send = []
 
     while grades_to_send:
@@ -310,7 +316,7 @@ def dashboard(wherethefuck):
 
         final_g_to_send.append(sub)
 
-
+    # check where does the user want to go and send them there with all the data. this way the user can keep using the site even if their internet gets disconnected
     if wherethefuck == 'personal':
         return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
     elif wherethefuck == 'grades':
@@ -319,7 +325,7 @@ def dashboard(wherethefuck):
     elif wherethefuck == 'attendance':
         return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
 
-
+# ignore
 @views.route('/signout')
 def signout():
     return '<h1>signout</h1>'
