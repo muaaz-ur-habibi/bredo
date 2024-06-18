@@ -24,9 +24,8 @@
 <hr>
 <h3>How does all the stuff in views.py work? (that's the main program)</h3>
 <p>
-  A basic and surface level run-down, the signin route uses Python Requests send a post request to the school's login page, once logged in it uses a session to stay connected, then it scrapes all the necessary data, and all the data that IS scrapable, sends it to the main dashboard route, where the data is refined, processed and cleaned, then sends to the HTML templates which use Jinja to display the data. CSS is used to beutify the page. So far Javascript is only used in the login page. The main back-end is built with only Python - Flask
+  A basic and surface level run-down, the signin route uses Python Requests send a post request to the school's login page, once logged in it uses a session to stay connected, then it scrapes all the necessary data using BeautifulSoup4, and all the data that IS scrapable, sends it to the main dashboard route, where the data is refined, processed and cleaned, then sends to the HTML templates which use Jinja to display the data. CSS is used to beutify the page. So far Javascript is only used in the login page. The main back-end is built with only Flask
 </p>
-<br>
 <hr>
 <h4>By the way here's a roadmap. I wanna add all this into this amazing website (I cant even finish the main dashboard)</h4>
 <p>❌ means not started. 🚧 means working on it. ✅ means up and running. ⏳ means i give up on this for now</p>
