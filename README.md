@@ -22,8 +22,10 @@
   <li>Javascript</li>
 </ul>
 <hr>
-<br>
-PS: if you think this is so shitty nigga this crap is being developed by a 16 year old immature anime loving Valorant grinding guy. Its to be expected
+<h3>How does all the stuff in views.py work? (that's the main program)</h3>
+<p>
+  A basic and surface level run-down, the signin route uses Python Requests send a post request to the school's login page, once logged in it uses a session to stay connected, then it scrapes all the necessary data, and all the data that IS scrapable, sends it to the main dashboard route, where the data is refined, processed and cleaned, then sends to the HTML templates which use Jinja to display the data. CSS is used to beutify the page. So far Javascript is only used in the login page. The main back-end is built with only Python - Flask
+</p>
 <br>
 <hr>
 <h4>By the way here's a roadmap. I wanna add all this into this amazing website (I cant even finish the main dashboard)</h4>
