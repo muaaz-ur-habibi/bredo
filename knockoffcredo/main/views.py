@@ -133,6 +133,10 @@ def signin():
 
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)
 
+
+
+
+
                         useful_info = []
 
                         useful_info.append(info[3].text)
@@ -311,6 +315,7 @@ def dashboard(wherethefuck):
         return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
     elif wherethefuck == 'grades':
         return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
+    # school's attendance getting function is seriously messed up man. like bro wtf
     elif wherethefuck == 'attendance':
         return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
 
