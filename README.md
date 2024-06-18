@@ -2,6 +2,7 @@
 <br>
 <h1>BREDO! The Better Credo (website)</h1>
 <h4>yup, thats correct. im directly challenging our school/college's tech staff</h4>
+<h5>Developed by a student of Credo School, and no they did not teach me this. I learned all of this myself</h5>
 <h3>Soo, what and why? Well:</h3>
 <ul>
   <li>Our original School website is really bland</li>
@@ -9,7 +10,6 @@
   <li>Color scheme. Login page: 😍, Dashboard and the rest: 🥴.</li>
   <li>Most importanty: This is made by a student. Come on now, which student has made a better school website for their school for free? huh?</li>
 </ul>
-
 <hr>
 <h4>Frameworks and languages used to make this:</h4>
 <ul>
@@ -21,8 +21,6 @@
   <li>Bootstrap CSS</li>
   <li>Javascript</li>
 </ul>
-<hr>
-Although this aint the final product, was hoping to meet some other mofos to help me on this. So far, its a one-man army. Guess it should be expected, they just dont teach enough actual useful knowledge in Credo huh 😋. Btw im self learned.
 <hr>
 <br>
 PS: if you think this is so shitty nigga this crap is being developed by a 16 year old immature anime loving Valorant grinding guy. Its to be expected
