@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from flask_login import login_user, logout_user, login_required, current_user
 
 import requests as req
 from bs4 import BeautifulSoup as bs
@@ -72,8 +71,9 @@ def signin():
                         n_s = bs(n_g.content, "html.parser")
 
                         m_table = n_s.find("table", {"class": "table table-bordered"})
-                        m_table.findChildren("tr")
-
+                        m = m_table.findChildren("tr")
+                        m = [str(i.text).replace('\n', '') for i in m]
+                        m = [x.replace(' - ', '-') for x in m]
                         
                         
                         # to scrape grades
@@ -84,8 +84,6 @@ def signin():
                         number_of_grades = len(c)
                         grades_data = []
                         grades_data.clear()
-
-                        print(number_of_grades)
 
                         for i in range(number_of_grades):
                             d = {
@@ -129,10 +127,14 @@ def signin():
                                     pass
                                 f_grades_send.append(i.strip())
 
+                        # convert the grades list to a string to send as a url parameter
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)
 
+                        #convert the fees list into a string as well
+                        fees_send = '|'.join(str(i) for i in m)
+                        print(fees_send)
 
-                        # define the list that will store (for now) the information to be sent
+                        # define the list that will store the information to be sent
                         useful_info = []
 
                         # appending all the useful info to the list to be sent
@@ -162,7 +164,7 @@ def signin():
                         online_users.append(str(id))
 
                         # finally redirect the user to the primary dashboard page with all the necessary info as parameters
-                        return redirect(url_for("views.dashboard", useful_info=data_to_send, id=str(id), subjects=subs, grades=f_grades_send, wherethefuck='personal'))
+                        return redirect(url_for("views.dashboard", useful_info=data_to_send, id=str(id), subjects=subs, grades=f_grades_send, fees=fees_send, whereto='personal'))
                 else:
                     # if the check failed means the credentials werent valid
                     flash("Credentials aint valid", category="error")
@@ -177,13 +179,16 @@ def signin():
         return render_template("signin.html")
 
 
-
-@views.route("/dashboard/<string:wherethefuck>")
-def dashboard(wherethefuck):
+# whereto specifies where the data should be sent to. main is the personal info page
+@views.route("/dashboard/<string:whereto>")
+def dashboard(whereto):
     # declare all the incoming data as variables
     incoming_data_o = request.args.get('useful_info')
     subjects_o = request.args.get('subjects')
     grades = request.args.get('grades')
+    fees = request.args.get('fees')
+
+    fees_o = fees
 
     grades_o = grades
 
@@ -316,14 +321,26 @@ def dashboard(wherethefuck):
 
         final_g_to_send.append(sub)
 
+    fees = fees.split("|")
+    fees = fees[1:]
+    fees_to_send = []
+    for i in fees:
+        i = i.strip().split(" ")
+        fees_to_send.append(i)
+
+    print(fees_to_send)
+
+
     # check where does the user want to go and send them there with all the data. this way the user can keep using the site even if their internet gets disconnected
-    if wherethefuck == 'personal':
-        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
-    elif wherethefuck == 'grades':
-        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
-    # school's attendance getting function is seriously messed up man. like bro wtf
-    elif wherethefuck == 'attendance':
-        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o)
+    if whereto == 'personal':
+        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+    elif whereto == 'grades':
+        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+    # school's attendance getting function is seriously messed up man. still alot of working to do on this
+    elif whereto == 'attendance':
+        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+    elif whereto == 'fee':
+        return render_template("fees.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
 
 # ignore
 @views.route('/signout')
