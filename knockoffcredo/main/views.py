@@ -341,8 +341,3 @@ def dashboard(whereto):
         return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
     elif whereto == 'fee':
         return render_template("fees.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
-
-# ignore
-@views.route('/signout')
-def signout():
-    return '<h1>signout</h1>'
