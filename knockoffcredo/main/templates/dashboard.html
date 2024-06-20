@@ -7,25 +7,25 @@
         <div class="col col-md-2">
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                  <a href="{{ url_for('views.dashboard', whereto='personal', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees)}}" class="nav-link active" aria-current="page">
+                  <a href="{{ url_for('views.dashboard', whereto='personal', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link active" aria-current="page">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url_for('views.dashboard', whereto='grades', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees)}}" class="nav-link text-white">
+                  <a href="{{ url_for('views.dashboard', whereto='grades', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                     Grades
                   </a>
                 </li>
                 <li>
-                  <a href="{{ url_for('views.dashboard', whereto='attendance', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees)}}" class="nav-link text-white">
+                  <a href="{{ url_for('views.dashboard', whereto='attendance', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                     Attendance
                   </a>
                 </li>
                 <li>
-                    <a href="{{ url_for('views.dashboard', whereto='fee', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees)}}" class="nav-link text-white">
+                    <a href="{{ url_for('views.dashboard', whereto='fee', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                       Fee
                     </a>

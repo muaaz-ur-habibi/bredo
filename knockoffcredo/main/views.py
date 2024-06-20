@@ -127,12 +127,33 @@ def signin():
                                     pass
                                 f_grades_send.append(i.strip())
 
+                        # to scrape the attendence
+                        first_date = list(id)[0:4]
+                        first_date = ''.join(first_date)
+
+                        attendence_payload= {
+                            'id': id,
+                            'first': f'{first_date}-08-01',
+                            'last': f'{str(int(first_date)+1)}-06-01',
+                            'sel': 'Student'
+                        }
+
+                        a_r = sesh.post("http://schoolportal.credo.edu.pk/schoolportal/pages/attendance/ajax/monthly_report.php", data=attendence_payload)
+                        a_s = bs(a_r.content, features='html.parser')
+
+                        t = a_s.find("table", {'class': 'table-hover table table-bordered'})
+                        attendences = t.findChildren('td')
+                        attendences = [f"{str(i.text)}" for i in attendences]
+
+                        attendences = attendences[5:]
+                        
+                        attendences = '|'.join(i for i in attendences)
+
                         # convert the grades list to a string to send as a url parameter
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)
 
                         #convert the fees list into a string as well
                         fees_send = '|'.join(str(i) for i in m)
-                        print(fees_send)
 
                         # define the list that will store the information to be sent
                         useful_info = []
@@ -164,7 +185,7 @@ def signin():
                         online_users.append(str(id))
 
                         # finally redirect the user to the primary dashboard page with all the necessary info as parameters
-                        return redirect(url_for("views.dashboard", useful_info=data_to_send, id=str(id), subjects=subs, grades=f_grades_send, fees=fees_send, whereto='personal'))
+                        return redirect(url_for("views.dashboard", useful_info=data_to_send, id=str(id), subjects=subs, grades=f_grades_send, fees=fees_send, attendence=attendences, whereto='personal'))
                 else:
                     # if the check failed means the credentials werent valid
                     flash("Credentials aint valid", category="error")
@@ -187,9 +208,11 @@ def dashboard(whereto):
     subjects_o = request.args.get('subjects')
     grades = request.args.get('grades')
     fees = request.args.get('fees')
+    attendences = request.args.get('attendence')
 
+
+    attendences_o = attendences
     fees_o = fees
-
     grades_o = grades
 
     # split based on the criteria specified above
@@ -225,7 +248,7 @@ def dashboard(whereto):
         flash('You arent signed in', category='error')
         return redirect(url_for("views.signin"))
     
-    # prettifying the data
+    # prettifying the main data
     incoming_data[1] = incoming_data[1].split(': ')[1]
     incoming_data[2] = 'Male' if incoming_data[2].split(": ")[1].strip() == 'Male' else 'Female'
     incoming_data[3] = incoming_data[3].split(': ')[1]
@@ -255,7 +278,7 @@ def dashboard(whereto):
     incoming_data[13] = incoming_data[13].split(':')[1]
     incoming_data[14] = incoming_data[14].split(':')[1]
 
-
+    # prettifying the grades data
     grades_to_send = []
 
     grades = grades.split("|")
@@ -307,6 +330,7 @@ def dashboard(whereto):
 
     final_g_to_send = []
 
+    # prettifying the subjects data
     while grades_to_send:
         sub = []
 
@@ -321,6 +345,7 @@ def dashboard(whereto):
 
         final_g_to_send.append(sub)
 
+    # prettifying the fees data
     fees = fees.split("|")
     fees = fees[1:]
     fees_to_send = []
@@ -328,16 +353,22 @@ def dashboard(whereto):
         i = i.strip().split(" ")
         fees_to_send.append(i)
 
-    print(fees_to_send)
-
+    # prettifying the attendences data
+    attendences = attendences.split('|')
+    
+    attendences_to_send = []
+    for i in range(0, len(attendences), 5):
+        x = [attendences[i], attendences[i+1], attendences[i+3], attendences[i+4]]
+        
+        attendences_to_send.append(x)
 
     # check where does the user want to go and send them there with all the data. this way the user can keep using the site even if their internet gets disconnected
     if whereto == 'personal':
-        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+        return render_template("dashboard.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o, attendence_s=attendences_to_send, original_attendence=attendences_o)
     elif whereto == 'grades':
-        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+        return render_template("grades.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o, attendence_s=attendences_to_send, original_attendence=attendences_o)
     # school's attendance getting function is seriously messed up man. still alot of working to do on this
     elif whereto == 'attendance':
-        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+        return render_template("attendance.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o, attendence_s=attendences_to_send, original_attendence=attendences_o)
     elif whereto == 'fee':
-        return render_template("fees.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o)
+        return render_template("fees.html", data=incoming_data, subs=t_subs, id=ID, original_subs=subjects_o, original_data=incoming_data_o, grades_s=final_g_to_send, original_grades=grades_o, fees_s=fees_to_send, original_fees=fees_o, attendence_s=attendences_to_send, original_attendence=attendences_o)
