@@ -30,7 +30,32 @@
                 Fee
               </a>
           </li>
-      </ul>
+        </ul>
+      </div>
+      <div class="col col-md-7">
+        <table class="table table-dark table-responsive-md table-sm-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Attendence</th>
+              <th scope="col">Time I.D card scanned</th>
+              <th scope="col">Date</th>
+              <th scope="col">Day</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for att in attendence_s %}
+            <tr>
+              <th scope="row">{{ att[-1] }}</th>
+              <td>{{ att[0] }}</td>
+              <td>{{ att[1] }}</td>
+              <td>{{ att[2] }}</td>
+              <td>{{ att[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
 
 

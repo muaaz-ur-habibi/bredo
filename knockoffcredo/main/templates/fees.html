@@ -33,7 +33,26 @@
         </ul>
       </div>
       <div class="col col-md-8">
-
+        <table class="table table-dark table-responsive-md">
+          <thead>
+            <tr>
+              <th scope="col">Month</th>
+              <th scope="col">To be Paid</th>
+              <th scope="col">Date Issued</th>
+              <th scope="col">I.D of challan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for challan in fees_s %}
+            <tr>
+              <th scope="row">{{ challan[0] }}</th>
+              <td>{{ challan[1] }}</td>
+              <td>{{ challan[2] }}</td>
+              <td>{{ challan[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
 

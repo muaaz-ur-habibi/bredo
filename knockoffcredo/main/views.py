@@ -358,7 +358,7 @@ def dashboard(whereto):
     
     attendences_to_send = []
     for i in range(0, len(attendences), 5):
-        x = [attendences[i], attendences[i+1], attendences[i+3], attendences[i+4]]
+        x = [attendences[i], attendences[i+1], attendences[i+3], attendences[i+4], [i][0]]
         
         attendences_to_send.append(x)
 

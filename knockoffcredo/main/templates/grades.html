@@ -43,9 +43,12 @@
                     {% endfor %}
                   </div>
                 </div>
+                <hr>
+                <p>(Note: On smaller devices like mobiles the tables are too big to be displayed at once so horizontally scroll to see the complete contents of the table)</p>
+                <hr>
                 <div class=" col-md-8">
                     {% for g in grades_s %}
-                    <table id="{{g[-1].lower()}}" class="table caption-top table-dark">
+                    <table id="{{g[-1].lower()}}" class="table caption-top table-dark table-responsive">
                       <caption>{{ g[-1].capitalize() }}</caption>
                       <thead>
                         <tr>
