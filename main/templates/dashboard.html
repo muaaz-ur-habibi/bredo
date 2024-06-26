@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Dashboard-Home{% endblock %}
+{% block extend_body%}
+
+    <h1 class="panel-heading pretty-headings"><center>Dashboard-Home</center></h1><br><br>
+    <div class="row row-cols-xs-1">
+        <div class="col col-md-2">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                  <a href="{{ url_for('views.dashboard', whereto='personal', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('views.dashboard', whereto='grades', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                    Grades
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('views.dashboard', whereto='attendance', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    Attendance
+                  </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('views.dashboard', whereto='fee', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                      Fee
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-md-7">
+            <div class="container-fluid">
+                <div class="container"">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row row-cols-xs-1 row-cols-sm-1 row-cols-xl-3 row-cols-xxl-3">
+                                <!--<div class="container col" style="display: flex; justify-content: center">-->
+                                    <div class="pretty-div-nigga col col-xl-auto">
+                                            <h3><u>Student Info:</u></h3><br>
+        
+                                            <h5 class="key-value-niggas">Name: </h5><p class="key-value-niggas">{{ data[0] }}</p><br>
+                                            <h5 class="key-value-niggas">Class: </h5><p class="key-value-niggas">{{ data[1] }}</p><br>
+                                            <h5 class="key-value-niggas">Gender: </h5><p class="key-value-niggas">{{ data[2] }}</p><br>
+                                            <h5 class="key-value-niggas">Date of Birth: </h5><p class="key-value-niggas">{{ data[3] }}</p><br>
+                                            <h5 class="key-value-niggas">Phone: </h5><p class="key-value-niggas">{{ data[4] }}</p><br>
+                                            <h5 class="key-value-niggas">Email: </h5><p class="key-value-niggas">{{ data[5] }}</p><br>
+                                    </div>
+                                    <div class="pretty-div-nigga col col-xl-auto">
+                                            <h3><u>Student's Parents Info:</u></h3><br>
+        
+                                            <h5 class="key-value-niggas">Father's Name: </h5><p class="key-value-niggas">{{ data[6] }}</p><br>
+                                            <h5 class="key-value-niggas">Father's Phone: </h5><p class="key-value-niggas">{{ data[7] }}</p><br>
+                                            <h5 class="key-value-niggas">Father's Email: </h5><p class="key-value-niggas">{{ data[8] }}</p><br><br>
+                                            <h5 class="key-value-niggas">Mother's Name: </h5><p class="key-value-niggas">{{ data[9] }}</p><br>
+                                            <h5 class="key-value-niggas">Mother's Phone: </h5><p class="key-value-niggas">{{ data[10] }}</p><br>
+                                            <h5 class="key-value-niggas">Mother's Email: </h5><p class="key-value-niggas">{{ data[11] }}</p><br>
+                                    </div>
+                                    <div class="pretty-div-nigga col col-xl-3">
+                                            <h3><u>Also:</u></h3><br>
+        
+                                            <h5 class="key-value-niggas">Address: </h5><p class="key-value-niggas">{{ data[12] }}</p><br>
+                                            <h5 class="key-value-niggas">Emergency No.: </h5><p class="key-value-niggas">{{ data[13] }}</p><br>
+                                            <h5 class="key-value-niggas">SMS: </h5><p class="key-value-niggas">{{ data[14] }}</p><br><br>
+                                    </div>
+                                <!--</div>-->
+                            </div>
+                            <br>
+                            <hr color="white">
+                            <br>
+                            <div class="row">
+                                <div class="container" style="display: flex; justify-content: center">
+                                    <table class="table table-light">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Group</th>
+                                            <th scope="col">Teacher</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for s in subs %}
+                                            <tr class="">
+                                            <th scope="row">{{ s[-1]+1 }}</th>
+                                            <td>{{ s[0] }}</td>
+                                            <td>{{ s[1] }}</td>
+                                            <td>{{ s[2] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" id="news-feed">
+        
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+{% endblock %}

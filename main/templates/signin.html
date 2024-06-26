@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Sign In{% endblock %}
+{% block extend_body%}
+
+    <h1><center>Sign In</center></h1>
+    <br><br><br>
+    <style>
+        .c-primary {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height:90vh;
+        }
+    </style>
+    <div class="container-fluid">
+        <center>
+            <div class="container row justify-content-center">
+                <div class="secondary-color pretty-forms col-md-4 h-25 col">
+                    <form method="post">         
+                        <div class="col">
+                            <div class="row">
+                                <label for="idinput" class="col-form-label">I.D</label>
+                                <input name="idInput" type="text" class="form-control" placeholder="I.D" id="idinput">
+                            </div>
+                            <div class="row">
+                                <label for="passwordinput" class="col-form-label">Password</label>
+                                <input name="passwordInput" type="password" class="form-control" placeholder="Password" id="passwordinput">
+                            </div>
+                            <br>
+                            <div class="row justify-content-center" id="button-holder">
+                                <button type="submit" class="btn btn-primary" id="submitDataBut" name="submitDataBut" onclick="loading()">Submit</button>
+                            </div>
+                            <!--<div class="spinner-border" role="status">
+                            </div>-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+    <script>
+        var d = document.getElementById('button-holder')
+        var loader = document.createElement('span')
+        loader.className = 'spinner-border spinner-border-sm'
+        loader.role = 'status'
+        loader.ariaHidden = 'true'
+        function loading () {
+            document.getElementById('submitDataBut').appendChild(loader)
+            document.getElementById('submitDataBut').innerHTML = 'Loading'
+        }
+    </script>
+{% endblock %}

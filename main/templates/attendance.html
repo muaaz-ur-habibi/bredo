@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Dashboard-Attendance{% endblock %}
+{% block extend_body%}
+
+    <h1 class="panel-heading pretty-headings"><center>Dashboard-Attendance</center></h1><br><br>
+    <div class="row row-cols-xs-1">
+      <div class="col col-md-2">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="{{ url_for('views.dashboard', whereto='personal', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('views.dashboard', whereto='grades', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              Grades
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('views.dashboard', whereto='attendance', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link active" aria-current="page">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+              Attendance
+            </a>
+          </li>
+          <li>
+              <a href="{{ url_for('views.dashboard', whereto='fee', id=id, useful_info=original_data, subjects=original_subs, grades=original_grades, fees=original_fees, attendence=original_attendence)}}" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                Fee
+              </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col col-md-7">
+        <table class="table table-dark table-responsive-md table-sm-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Attendence</th>
+              <th scope="col">Time I.D card scanned</th>
+              <th scope="col">Date</th>
+              <th scope="col">Day</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for att in attendence_s %}
+            <tr>
+              <th scope="row">{{ att[-1] }}</th>
+              <td>{{ att[0] }}</td>
+              <td>{{ att[1] }}</td>
+              <td>{{ att[2] }}</td>
+              <td>{{ att[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+{% endblock %}
