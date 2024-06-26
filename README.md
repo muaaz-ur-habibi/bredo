@@ -1,7 +1,7 @@
 (you can currently download the files and see for yourself how this looks.)
 <br>
-<h1>BREDO! The Better Credo (website)</h1>
-<h5>Developed by a self-taught Python Dev student of Credo School</h5>
+<h1><center>BREDO! The Better Credo (website)</center></h1>
+<h4>Developed by a self-taught Python Dev student of Credo School</h4>
 <h3>Soo, what and why? Well:</h3>
 <ul>
   <li>Our original School website is really bland</li>
