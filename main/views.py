@@ -59,6 +59,8 @@ def signin():
                         subs = t.findChildren("td")
                         subs = subs[3:]
 
+                        g.close()
+
 
                         # to scrape the fees
                         fee_data = {
@@ -74,6 +76,8 @@ def signin():
                         m = m_table.findChildren("tr")
                         m = [str(i.text).replace('\n', '') for i in m]
                         m = [x.replace(' - ', '-') for x in m]
+
+                        n_g.close()
                         
                         
                         # to scrape grades
@@ -126,6 +130,8 @@ def signin():
                                 except:
                                     pass
                                 f_grades_send.append(i.strip())
+                        
+                        g_g.close()
 
                         # to scrape the attendence
                         first_date = list(id)[0:4]
@@ -148,6 +154,8 @@ def signin():
                         attendences = attendences[5:]
                         
                         attendences = '|'.join(i for i in attendences)
+
+                        a_r.close()
 
                         # convert the grades list to a string to send as a url parameter
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)

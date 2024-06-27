@@ -1,1 +1,1 @@
-web: gunicorn --bind :$PORT --limit-request-line 40000 --workers 4 app:app
+web: gunicorn app:app --bind :$PORT --limit-request-line 0 -w 4
