@@ -42,6 +42,8 @@ def signin():
 
             s = bs(g.content, "html.parser")
             c = s.find('section', {'class': 'content-header'})
+
+            print('This is nice 1')
             
             
             try:
@@ -60,6 +62,8 @@ def signin():
                         subs = subs[3:]
 
                         g.close()
+                        
+                        print('This is nice 2')
 
 
                         # to scrape the fees
@@ -78,6 +82,8 @@ def signin():
                         m = [x.replace(' - ', '-') for x in m]
 
                         n_g.close()
+
+                        print('This is nice 3')
                         
                         
                         # to scrape grades
@@ -133,6 +139,8 @@ def signin():
                         
                         g_g.close()
 
+                        print('This is nice 4')
+
                         # to scrape the attendence
                         first_date = list(id)[0:4]
                         first_date = ''.join(first_date)
@@ -156,6 +164,8 @@ def signin():
                         attendences = '|'.join(i for i in attendences)
 
                         a_r.close()
+
+                        print('This is nice 5')
 
                         # convert the grades list to a string to send as a url parameter
                         f_grades_send = '|'.join(str(i).strip() for i in f_grades_send)
