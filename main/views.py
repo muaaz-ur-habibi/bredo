@@ -61,7 +61,7 @@ def signin():
                         subs = t.findChildren("td")
                         subs = subs[3:]
 
-                        g.close()
+                        #g.close()
                         
                         print('This is nice 2')
 
@@ -81,7 +81,7 @@ def signin():
                         m = [str(i.text).replace('\n', '') for i in m]
                         m = [x.replace(' - ', '-') for x in m]
 
-                        n_g.close()
+                        #n_g.close()
 
                         print('This is nice 3')
                         
@@ -137,7 +137,7 @@ def signin():
                                     pass
                                 f_grades_send.append(i.strip())
                         
-                        g_g.close()
+                        #g_g.close()
 
                         print('This is nice 4')
 
@@ -163,7 +163,7 @@ def signin():
                         
                         attendences = '|'.join(i for i in attendences)
 
-                        a_r.close()
+                        #a_r.close()
 
                         print('This is nice 5')
 
