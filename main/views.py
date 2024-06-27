@@ -261,6 +261,8 @@ def dashboard(whereto):
 
     ID = request.args.get('id')
 
+    print(online_users)
+
     # if user tried to go to dashboard without signing in throw an error
     if ID not in online_users:
         flash('You arent signed in', category='error')
