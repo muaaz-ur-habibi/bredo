@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Dashboard-Fee{% endblock %}
+{% block extend_body%}
+
+<h1><center>Bredo,</center></h1>
+<h3><center>The (B)etter C(redo)</center></h3>
+<hr>
+<div class="container-fluid row">
+    <div class="container col col-md-5">
+        <h3 class="display-4"><center>About the Dev</center></h3>
+        <p>
+            I am (was cuz now im in college) a student of Credo School and a self-taught dev. The name is Muaaz Khan and im 16 years old as of 29 June 2024. I really dont know what to write over here, but I guess I could say that this was a very lovely project to work on 🥰.
+            <br><br>My original plan was to also create my own database to store all the info, but then I realised 🤔 my site could just be a better front-end implementation of the original school portal. But ofcourse I needed some way to connect that front-end to the original school portal so I used Flask for that.
+            <br><br>Honestly the hardest thing about this was probably finding a good free hosting platform since im broke 😓. I spent 3 days finding a good one.
+            <br><br>Anyways, I dont think I will really be working on this all that much since this was built as a way for me to pass my time. But if you have any suggestions/improvements, do let me know. And also, if you're reading this, please feel free to share this site with a student of Credo School so that they could benefit from it 😁
+        </p>
+    </div>
+    <div class="container col col-md-5">
+        <h3 class="display-4"><center>Go use it!</center></h3>
+        <h5><center>How to use?</center></h5>
+        <br>
+        <p>
+            Just use the same <mark>I.D</mark> and <mark>password</mark> that you used for the original school portal and voila!
+        </p>
+        <hr color="white">
+        <h5><center>Get Going!</center></h5>
+        <br>
+        <center>
+            <a href="/signin">
+                <button type="button" class="btn btn-outline-info btn-lg" name="lets-go">Sign In!</button>
+            </a>
+        </center>
+    </div>
+</div>
+
+{% endblock %}

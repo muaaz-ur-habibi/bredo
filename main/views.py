@@ -9,6 +9,10 @@ views = Blueprint("views", __name__)
 # declare a list that will store all the online users
 online_users = []
 
+@views.route('/')
+def landing():
+    return render_template('landing.html')
+
 # main signin page
 @views.route("/signin", methods=["GET", "POST"])
 def signin():
