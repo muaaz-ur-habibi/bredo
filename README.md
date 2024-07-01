@@ -1,7 +1,7 @@
-(you can currently download the files and see for yourself how this looks.)
+site is live!: check it out: https://bredo.koyeb.app/
 <br>
-<h1><center>BREDO! The Better Credo (website)</center></h1>
-<h4>Developed by a self-taught Python Dev student of Credo School</h4>
+<h1 align="center"><center>BREDO! The Better Credo (website)</center></h1>
+<h4 align="center">Developed by a self-taught Python Dev student of Credo School</h4>
 <h3>Soo, what and why? Well:</h3>
 <ul>
   <li>Our original School website is really bland</li>
