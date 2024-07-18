@@ -1,4 +1,5 @@
 site is live!: check it out: https://bredo.koyeb.app/
+Disclaimer: due to security and privacy reasons outsiders cannot view this site.
 <br>
 <h1 align="center"><center>BREDO! The Better Credo (website)</center></h1>
 <h4 align="center">Developed by a self-taught Python Dev student of Credo School</h4>
